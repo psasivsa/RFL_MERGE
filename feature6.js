@@ -1,0 +1,1 @@
+var f6 = "feature 6"
