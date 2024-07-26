@@ -1,0 +1,8 @@
+#!/bin/bash
+
+branch_name=$(git symbolic-ref --short HEAD)
+
+if [ "$branch_name" = "main" ]; then
+    echo "No puedes hacer commits directos en la rama 'main'."
+    exit 1
+fi
