@@ -13,7 +13,9 @@ branch_name=$(git rev-parse --abbrev-ref HEAD)
 types='fix|feat|chore|test|docs|build|ci|style|refactor|perf|revert|ops|hotfix|inci'
 
 # Definir los patrones de mensaje de commit para cada entorno
-pattern_main="^(RFL-[0-9]{4}|INCI-[0-9]+|Merge branch .*$) ($types)(\([^)]+\))?: ?.+"
+# pattern_main="^(RFL-[0-9]{4}|INCI-[0-9]+|Merge branch .*) ($types)(\([^)]+\))?: ?.+"
+pattern_main="^(RFL-[0-9]{4} ($types):|INCI-[0-9]+ ($types):|Merge branch .*) ?.+"
+
 pattern_preprod="^(SPRINT[\w\-]*|RFL-[0-9]{4}|INCI-[0-9]+|Merge branch .*$) ?.+"
 pattern_production="^(SPRINT[\w\-]*|RFL-[0-9]{4}|INCI-[0-9]+|Merge branch .*$) ?.+"
 
