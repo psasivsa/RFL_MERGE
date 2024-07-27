@@ -3,16 +3,19 @@
 # Leer el mensaje del commit
 commit_message=$(cat "$1")
 
+# Definir la lista de tipos de commits permitidos
+types='fix|feat|chore|test|docs|build|ci|style|refactor|perf|revert|ops'
+
 # Definir la expresión regular para el formato deseado
-pattern="^RFL-[0-9]{4} (feat|fix|documentation)(\([^)]+\))?: .+"
+pattern="^RFL-[0-9]{4} ($types)(\([^)]+\))?: .+"
 
 # Validar el mensaje del commit
 if [[ ! $commit_message =~ $pattern ]]; then
     echo "Error: El mensaje de commit no cumple con el formato requerido."
-    echo "Formato requerido: RFL-XXXX [fix|feat|...]: mensaje"
-    echo "Formato requerido: RFL-XXXX [fix|feat|...](opcional): mensaje"
-    echo "Valores permitidos [fix|feat|chore|test|docs|build|ci|style|refactor|perf|revert|ops]"
-    echo "Commit message with scope and ! to draw attention to breaking change"
-    echo "example: RFL-XXXX feat(api)!: send an email to the customer when a product is shipped
+    echo "Formato requerido: RFL-1234 fix: add login page"
+    echo "Formato requerido: RFL-2345 fix(users): check user-id before buy"
+    echo "Valores permitidos [$types]"
+    echo "Commit message with scope and '!' to draw attention to breaking change"
+    echo "example: RFL-XXXX feat(api)!: send an email to the customer when a product is shipped"
     exit 1
 fi
