@@ -10,3 +10,7 @@ git config merge.ff false
 
 # Configura el editor de texto por defecto para Git
 git config core.editor "code" # VSCode
+
+
+# Eliminar las referencias a ramas remotas que han sido eliminadas en el repositorio remoto al realizar un `fetch`.
+# git config fetch.prune true
