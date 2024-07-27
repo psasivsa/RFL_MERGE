@@ -7,6 +7,7 @@ branch_name=$(git rev-parse --abbrev-ref HEAD)
 # `MERGING` es un estado que puede ser reconocido si hay un archivo en el directorio `.git` llamado `MERGE_HEAD`
 if [ "$branch_name" = "main" ] || [ -f .git/MERGE_HEAD ]; then
     # Permitir commit si estamos en la rama 'main' o en un estado de fusión
+    echo "Estas en fusion a 'main'."
     exit 0
 else
     # Evitar commit en otras ramas
@@ -18,6 +19,7 @@ fi
 # `MERGING` es un estado que puede ser reconocido si hay un archivo en el directorio `.git` llamado `MERGE_HEAD`
 if [ "$branch_name" = "preproduction" ] || [ -f .git/MERGE_HEAD ]; then
     # Permitir commit si estamos en la rama 'preproduction' o en un estado de fusión
+    echo "Estas en fusion a 'preproduction'."
     exit 0
 else
     # Evitar commit en otras ramas
@@ -29,6 +31,7 @@ fi
 # `MERGING` es un estado que puede ser reconocido si hay un archivo en el directorio `.git` llamado `MERGE_HEAD`
 if [ "$branch_name" = "production" ] || [ -f .git/MERGE_HEAD ]; then
     # Permitir commit si estamos en la rama 'production' o en un estado de fusión
+    echo "Estas en fusion a 'production'."
     exit 0
 else
     # Evitar commit en otras ramas
