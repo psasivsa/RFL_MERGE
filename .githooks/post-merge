@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Obtener la rama actual después de la fusión
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+# Verificar si estamos en la rama 'main' y si es una fusión
+if [ "$current_branch" = "main" ]; then
+    echo "Has fusionado con la rama 'main'."
+fi
+
+# Verificar si estamos en la rama 'preproduction' y si es una fusión
+if [ "$current_branch" = "preproduction" ]; then
+    echo "Has fusionado con la rama 'preproduction'."
+fi
+
+# Verificar si estamos en la rama 'production' y si es una fusión
+if [ "$current_branch" = "production" ]; then
+    echo "Has fusionado con la rama 'production'."
+fi
+
+# Permitir la operación
+exit 0
