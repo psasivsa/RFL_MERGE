@@ -10,7 +10,7 @@ commit_message=$(cat "$commit_message_file")
 branch_name=$(git rev-parse --abbrev-ref HEAD)
 
 # Definir la lista de tipos de commits permitidos
-types=''
+types='fix|feat|chore|test|docs|build|ci|style|refactor|perf|revert|ops|hotfix|inci'
 
 # Definir los patrones de mensaje de commit para cada entorno
 pattern_main="^(RFL-[0-9]{4}|INCI-[0-9]+|Merge branch .*$) ($types)(\([^)]+\))?: ?.+"
@@ -21,12 +21,15 @@ pattern_production="^(SPRINT[\w\-]*|RFL-[0-9]{4}|INCI-[0-9]+|Merge branch .*$) ?
 if [[ $branch_name == "main" || $branch_name =~ ^RFL-[0-9]{4} || $branch_name =~ ^INCI-[0-9]+ || $commit_message =~ ^Merge\ branch ]]; then
     # Si el nombre de la rama comienza con RFL- o INCI- o el mensaje es un merge, usar el patrón principal
     pattern="$pattern_main"
+    echo "pattern-1"
 elif [[ $branch_name == "preprod" ]]; then
     # Para la rama preprod
     pattern="$pattern_preprod"
+    echo "pattern-2"
 elif [[ $branch_name == "production" ]]; then
     # Para la rama de producción
     pattern="$pattern_production"
+    echo "pattern-3"
 else
     # Para ramas que no son main, preprod o production, aplicar un patrón genérico
     echo "Error: El nombre de la Rama no coincide con ningun patron!"
@@ -58,7 +61,12 @@ if [[ ! $commit_message =~ $pattern ]]; then
             echo "RFL-5555 ..."
             ;;
         *)
-            echo "Error: El mensaje de commit no cumple con el formato requerido para esta rama."
+            echo "Error: El mensaje de commit para la rama '$branch_name' debe seguir el siguiente Formato"
+            echo "RFL-2222 fix: add login page"
+            echo "RFL-3333 fix(INCI33333333): fix null exception on buy products"
+            echo "Valores permitidos [$types]"
+            echo "El mensaje de commit debe incluir un alcance y un '!' para resaltar 'breaking changes'."
+            echo "Ejemplo: RFL-XXXX feat(api)!: enviar un correo electrónico al cliente cuando se envíe un producto"
             ;;
     esac
 
