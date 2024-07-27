@@ -3,42 +3,12 @@
 # Obtener la rama en la que estamos intentando hacer commit
 branch_name=$(git rev-parse --abbrev-ref HEAD)
 
-# Verificar si estamos en un proceso de fusión
-# `MERGING` es un estado que puede ser reconocido si hay un archivo en el directorio `.git` llamado `MERGE_HEAD`
-if [ "$branch_name" = "main" ] || [ -f .git/MERGE_HEAD ]; then
-    # Permitir commit si estamos en la rama 'main' o en un estado de fusión
-    echo "Estas en fusion a 'main'."
-    exit 0
-else
-    # Evitar commit en otras ramas
-    echo "No puedes hacer commits directos en ramas distintas a 'main' a menos que estés en una fusión."
+# Verificar si estamos en la rama 'main' o si estamos en un proceso de fusión
+if [ "$branch_name" = "main" ] && [ ! -f .git/MERGE_HEAD ]; then
+    echo "No puedes hacer commits directos a la rama 'main'."
     exit 1
 fi
 
-# Verificar si estamos en un proceso de fusión
-# `MERGING` es un estado que puede ser reconocido si hay un archivo en el directorio `.git` llamado `MERGE_HEAD`
-if [ "$branch_name" = "preproduction" ] || [ -f .git/MERGE_HEAD ]; then
-    # Permitir commit si estamos en la rama 'preproduction' o en un estado de fusión
-    echo "Estas en fusion a 'preproduction'."
-    exit 0
-else
-    # Evitar commit en otras ramas
-    echo "No puedes hacer commits directos en ramas distintas a 'preproduction' a menos que estés en una fusión."
-    exit 1
-fi
-
-# Verificar si estamos en un proceso de fusión
-# `MERGING` es un estado que puede ser reconocido si hay un archivo en el directorio `.git` llamado `MERGE_HEAD`
-if [ "$branch_name" = "production" ] || [ -f .git/MERGE_HEAD ]; then
-    # Permitir commit si estamos en la rama 'production' o en un estado de fusión
-    echo "Estas en fusion a 'production'."
-    exit 0
-else
-    # Evitar commit en otras ramas
-    echo "No puedes hacer commits directos en ramas distintas a 'production' a menos que estés en una fusión."
-    exit 1
-fi
-
-
-# Permitir el commit si no estamos en la rama 'main'
-# exit 0
+# Permitir commit si no estamos en la rama 'main', o si estamos en una fusión
+echo "FIN pre-commit"
+exit 0
