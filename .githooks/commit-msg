@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Leer el mensaje del commit
+commit_message=$(cat "$1")
+
+# Definir la expresión regular para el formato deseado
+pattern="^RFL-[0-9]{4} (feat|fix|documentation)(\([^)]+\))?: .+"
+
+# Validar el mensaje del commit
+if [[ ! $commit_message =~ $pattern ]]; then
+    echo "Error: El mensaje de commit no cumple con el formato requerido."
+    echo "Formato requerido: RFL-XXXX [fix|feat|...]: mensaje"
+    echo "Formato requerido: RFL-XXXX [fix|feat|...](opcional): mensaje"
+    echo "Valores permitidos [fix|feat|chore|test|docs|build|ci|style|refactor|perf|revert|ops]"
+    echo "Commit message with scope and ! to draw attention to breaking change"
+    echo "example: RFL-XXXX feat(api)!: send an email to the customer when a product is shipped
+    exit 1
+fi
