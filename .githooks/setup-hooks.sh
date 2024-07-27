@@ -4,3 +4,9 @@
 # Identificar archivos no ejecutable: `$ ls -l` el archivo tiene que tener una x `-rwxr--r-- ...` 
 #!/bin/bash
 git config core.hooksPath .githooks
+
+# Establece la configuración local del repositorio actual para deshabilitar la fusión fast-forward en los merges
+git config merge.ff false
+
+# Configura el editor de texto por defecto para Git
+git config core.editor "code" # VSCode

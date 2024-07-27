@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Definir la expresión regular para el formato de las ramas
+branch_pattern='^(refs/heads/(RFL-[0-9]{4}|INCI[0-9]+)).*'
+
+while read local_ref local_sha remote_ref remote_sha; do
+    # Validar solo las referencias de ramas
+    if [[ $remote_ref =~ refs/heads/ ]]; then
+        if [[ ! $remote_ref =~ $branch_pattern ]]; then
+            echo "Error: El nombre de la rama '$remote_ref' no cumple con el formato requerido."
+            echo "Las ramas deben comenzar con 'RFL-' seguido de cuatro números o 'INCI' seguido de números."
+            exit 1
+        fi
+    fi
+done
+
+exit 0
