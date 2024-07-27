@@ -1,21 +1,78 @@
 #!/bin/bash
 
+# Ruta al archivo de mensaje de commit
+commit_message_file=$1
+
 # Leer el mensaje del commit
-commit_message=$(cat "$1")
+commit_message=$(cat "$commit_message_file")
+
+# Obtener el nombre de la rama actual
+branch_name=$(git rev-parse --abbrev-ref HEAD)
 
 # Definir la lista de tipos de commits permitidos
-types='fix|feat|chore|test|docs|build|ci|style|refactor|perf|revert|ops'
+types='fix|feat|chore|test|docs|build|ci|style|refactor|perf|revert|ops|hotfix|inci'
 
-# Definir la expresión regular para el formato deseado
-pattern="^RFL-[0-9]{4} ($types)(\([^)]+\))?: .+"
+# Definir los patrones de mensaje de commit para cada entorno
+pattern_main="^(RFL-[0-9]{4}|INCI-[0-9]+|Merge branch .*$) ($types)(\([^)]+\))?: ?.+"
+pattern_preprod="^(SPRINT[\w\-]*|RFL-[0-9]{4}|INCI-[0-9]+|Merge branch .*$) ?.+"
+pattern_production="^(SPRINT[\w\-]*|RFL-[0-9]{4}|INCI-[0-9]+|Merge branch .*$) ?.+"
+
+# Determinar el patrón a usar basado en el nombre de la rama
+if [[ $branch_name == "main" || $branch_name =~ ^RFL-[0-9]{4} || $branch_name =~ ^INCI-[0-9]+ || $commit_message =~ ^Merge\ branch ]]; then
+    # Si el nombre de la rama comienza con RFL- o INCI- o el mensaje es un merge, usar el patrón principal
+    pattern="$pattern_main"
+    echo "pattern-1"
+elif [[ $branch_name == "preprod" ]]; then
+    # Para la rama preprod
+    pattern="$pattern_preprod"
+    echo "pattern-2"
+elif [[ $branch_name == "production" ]]; then
+    # Para la rama de producción
+    pattern="$pattern_production"
+    echo "pattern-3"
+else
+    # Para ramas que no son main, preprod o production, aplicar un patrón genérico
+    echo "Error: El nombre de la Rama no coincide con ningun patron!"
+    pattern="^(XYZ) ?.+"
+    exit 1
+fi
+
 
 # Validar el mensaje del commit
 if [[ ! $commit_message =~ $pattern ]]; then
     echo "Error: El mensaje de commit no cumple con el formato requerido."
-    echo "Formato requerido: RFL-1234 fix: add login page"
-    echo "Formato requerido: RFL-2345 fix(users): check user-id before buy"
-    echo "Valores permitidos [$types]"
-    echo "Commit message with scope and '!' to draw attention to breaking change"
-    echo "example: RFL-XXXX feat(api)!: send an email to the customer when a product is shipped"
+    case "$branch_name" in
+        main)
+            echo "Error: El mensaje de commit para 'main' debe seguir el siguiente Formato"
+            echo "RFL-2222 fix: add login page"
+            echo "RFL-3333 fix(INCI33333333): fix null exception on buy products"
+            echo "Valores permitidos [$types]"
+            echo "El mensaje de commit debe incluir un alcance y un '!' para resaltar 'breaking changes'."
+            echo "Ejemplo: RFL-XXXX feat(api)!: enviar un correo electrónico al cliente cuando se envíe un producto"
+            ;;
+        preprod)
+            echo "Error: El mensaje de commit para 'preprod' debe seguir el siguiente Formato"
+            echo "SPRINT_2024.01"
+            echo "RFL-4444 ..."
+            ;;
+        production)
+            echo "Error: El mensaje de commit para 'production' debe seguir el siguiente Formato"
+            echo "SPRINT_2024.01"
+            echo "RFL-5555 ..."
+            ;;
+        *)
+            echo "Error: El mensaje de commit para la rama '$branch_name' debe seguir el siguiente Formato"
+            echo "RFL-2222 fix: add login page"
+            echo "RFL-3333 fix(INCI33333333): fix null exception on buy products"
+            echo "Valores permitidos [$types]"
+            echo "El mensaje de commit debe incluir un alcance y un '!' para resaltar 'breaking changes'."
+            echo "Ejemplo: RFL-XXXX feat(api)!: enviar un correo electrónico al cliente cuando se envíe un producto"
+            ;;
+    esac
+
     exit 1
 fi
+
+# Permitir la operación
+echo "(Hook: commit-msg PASS)"
+exit 0

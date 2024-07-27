@@ -9,6 +9,18 @@ if [ "$branch_name" = "main" ] && [ ! -f .git/MERGE_HEAD ]; then
     exit 1
 fi
 
-# Permitir commit si no estamos en la rama 'main', o si estamos en una fusión
-echo "FIN pre-commit"
+# Verificar si estamos en la rama 'preprod' o si estamos en un proceso de fusión
+if [ "$branch_name" = "preprod" ] && [ ! -f .git/MERGE_HEAD ]; then
+    echo "No puedes hacer commits directos a la rama 'preprod'."
+    exit 1
+fi
+
+# Verificar si estamos en la rama 'production' o si estamos en un proceso de fusión
+if [ "$branch_name" = "production" ] && [ ! -f .git/MERGE_HEAD ]; then
+    echo "No puedes hacer commits directos a la rama 'production'."
+    exit 1
+fi
+
+# Permitir commit si no estamos en la rama 'main, preprod, production', o si estamos en una fusión
+echo "(Hook: pre-commit PASS)"
 exit 0

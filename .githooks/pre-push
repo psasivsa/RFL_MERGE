@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Branch Convention
+# ---------------------------------------------------------
 # Definir la expresión regular para el formato de las ramas
 branch_pattern='^(refs/heads/(RFL-[0-9]{4}|INCI[0-9]+)).*'
 
@@ -13,5 +15,9 @@ while read local_ref local_sha remote_ref remote_sha; do
         fi
     fi
 done
+# ---------------------------------------------------------
+
+
+
 
 exit 0
