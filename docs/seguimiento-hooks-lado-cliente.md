@@ -1,6 +1,6 @@
 # git commit -m ...
 ```sh
-git commit -m "RFL-0012 feat: add githooks"
+$ git commit -m "RFL-0015 feat: add git switch command"
     FILE '.githooks/pre-commit' START
     FILE '.githooks/pre-commit' END :)
     FILE '.githooks/prepare-commit-msg' START
@@ -10,6 +10,8 @@ git commit -m "RFL-0012 feat: add githooks"
     FILE '.githooks/commit-msg' END :)
     FILE '.githooks/post-commit' START
     FILE '.githooks/post-commit' END :)
+    [RFL-0015 62b419c] RFL-0015 feat: add git switch command
+    2 files changed, 5 insertions(+), 3 deletions(-)
 ```
 
 
@@ -20,7 +22,7 @@ NULL
 
 
 
-# git switch main 
+# git switch 
 ```sh
 $ git switch main
     Switched to branch 'main'
@@ -32,8 +34,8 @@ $ git switch main
     FILE '.githooks/post-checkout' START
     FILE '.githooks/post-checkout' END :)
 
-$ git switch -c RFL-0014
-    Switched to a new branch 'RFL-0014'
+$ git switch -c RFL-0015
+    Switched to a new branch 'RFL-0015'
     FILE '.githooks/post-checkout' START
     FILE '.githooks/post-checkout' END :)
 ```
