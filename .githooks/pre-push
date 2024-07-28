@@ -13,7 +13,7 @@ echo "FILE '.githooks/pre-push' START"
 current_branch=$(git symbolic-ref --short HEAD)
 
 # Definir el patrón permitido
-allowed_pattern="^(RFL-|INCI)"
+allowed_pattern="^(RFL-|INCI|main)"
 
 # Comprobar si el nombre de la rama coincide con el patrón permitido
 if [[ ! "$current_branch" =~ $allowed_pattern ]]; then
