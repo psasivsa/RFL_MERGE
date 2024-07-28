@@ -20,9 +20,12 @@ NULL
 
 
 
-# git switch main 
+# git switch 
 ```sh
-NULL
+$ git switch -c RFL-0015
+    Switched to a new branch 'RFL-0015'
+    FILE '.githooks/post-checkout' START
+    FILE '.githooks/post-checkout' END :)
 ```
 
 # git pull 
