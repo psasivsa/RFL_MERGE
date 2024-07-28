@@ -1,5 +1,11 @@
 #!/bin/bash
 
+echo "FILE '.githooks/pre-commit' START"
+
+
+
+# Impedir poder hacer commits directos a la rama 'main, preprod, production'
+# ---------------------------------------------------------
 # Obtener la rama en la que estamos intentando hacer commit
 branch_name=$(git rev-parse --abbrev-ref HEAD)
 
@@ -20,7 +26,9 @@ if [ "$branch_name" = "production" ] && [ ! -f .git/MERGE_HEAD ]; then
     echo "No puedes hacer commits directos a la rama 'production'."
     exit 1
 fi
+# ---------------------------------------------------------
+
 
 # Permitir commit si no estamos en la rama 'main, preprod, production', o si estamos en una fusión
-echo "(Hook: pre-commit PASS)"
+echo "FILE '.githooks/pre-commit' END :)"
 exit 0

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "FILE '.githooks/fsmonitor-watchman' START"
+echo "FILE '.githooks/fsmonitor-watchman' END :)"
