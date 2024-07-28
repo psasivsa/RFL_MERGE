@@ -1,16 +1,17 @@
 # git commit -m ...
 ```sh
-git commit -m "RFL-0012 feat: add githooks"
-
-# FILE '.githooks/pre-commit' START
-# FILE '.githooks/pre-commit' END :)
-# FILE '.githooks/prepare-commit-msg' START
-# FILE '.githooks/prepare-commit-msg' END :)
-# FILE '.githooks/commit-msg' START
-# pattern-1
-# FILE '.githooks/commit-msg' END :)
-# FILE '.githooks/post-commit' START
-# FILE '.githooks/post-commit' END :)
+$ git commit -m "RFL-0015 feat: add git switch command"
+    FILE '.githooks/pre-commit' START
+    FILE '.githooks/pre-commit' END :)
+    FILE '.githooks/prepare-commit-msg' START
+    FILE '.githooks/prepare-commit-msg' END :)
+    FILE '.githooks/commit-msg' START
+    pattern-1
+    FILE '.githooks/commit-msg' END :)
+    FILE '.githooks/post-commit' START
+    FILE '.githooks/post-commit' END :)
+    [RFL-0015 62b419c] RFL-0015 feat: add git switch command
+    2 files changed, 5 insertions(+), 3 deletions(-)
 ```
 
 # git status
