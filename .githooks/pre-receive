@@ -1,4 +1,9 @@
 #!/bin/bash
 
+# .git\hooks\pre-receive.sample
+# Generalmente del lado del servidor, pero puede configurarse localmente para pruebas
+
 echo "FILE '.githooks/pre-receive' START"
 echo "FILE '.githooks/pre-receive' END :)"
+
+exit 0

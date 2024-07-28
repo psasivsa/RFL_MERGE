@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Otros
+# post-merge: Después de realizar un git merge.
+# Se ejecuta después de que se realiza un git merge. Es útil para realizar tareas como la compilación del código o la actualización de dependencias.
+# `$ git merge`
+
 echo "FILE '.githooks/post-merge' START"
 
 # # Obtener la rama actual después de la fusión

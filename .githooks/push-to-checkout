@@ -1,4 +1,8 @@
 #!/bin/bash
 
+# .git\hooks\push-to-checkout.sample
+
 echo "FILE '.githooks/push-to-checkout' START"
 echo "FILE '.githooks/push-to-checkout' END :)"
+
+exit 0

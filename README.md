@@ -19,6 +19,7 @@ chmod -R +x .githooks/
 
 # que el archivo pre-receive en la carpeta .githooks sea ejecutable
 chmod +x .githooks/pre-receive
+chmod +x post-checkout
 
 # Ejecutar para que se apliquen las configuraciones
 ./.git-utils/setup-hooks.sh
@@ -34,3 +35,4 @@ Configurar el Hook
 - add feature-3 with no-fastfoforward 
 - add feature-4
 - add feature-5 to project
+

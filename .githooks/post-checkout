@@ -1,0 +1,12 @@
+
+#!/bin/bash
+
+# # Otros
+# # post-checkout: Después de realizar un git checkout.
+# # Se ejecuta después de que se realiza un git checkout. Se puede usar para configurar el entorno de trabajo según la nueva rama o el nuevo commit al que se cambió.
+# # `$ git checkout`, `$ git clone`, `$ git switch`, 
+
+echo "FILE '.githooks/post-checkout' START"
+echo "FILE '.githooks/post-checkout' END :)"
+
+exit 0

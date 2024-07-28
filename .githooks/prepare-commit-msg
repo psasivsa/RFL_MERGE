@@ -1,4 +1,12 @@
 #!/bin/bash
 
+# .git\hooks\prepare-commit-msg.sample
+# Committing-workflow hooks
+# prepare-commit-msg: Antes de abrir el editor de mensajes de commit.
+# Se ejecuta antes de que el editor de mensajes de commit se abra. Es útil para modificar el mensaje de commit predeterminado antes de que el usuario lo vea.
+# `$ git commit`, `$ git merge`, `$ git revert`, `$ git commit --amend`
+
 echo "FILE '.githooks/prepare-commit-msg' START"
 echo "FILE '.githooks/prepare-commit-msg' END :)"
+
+exit 0

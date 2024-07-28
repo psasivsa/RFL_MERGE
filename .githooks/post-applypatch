@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Email workflow hooks
+# post-applypatch: Se ejecuta después de aplicar un parche con git am.
+# `$ git am`
+
+echo "FILE '.githooks/post-applypatch' START"
+echo "FILE '.githooks/post-applypatch' END :)"
+
+exit 0

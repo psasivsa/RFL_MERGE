@@ -1,0 +1,14 @@
+
+#!/bin/bash
+
+# Generalmente del lado del servidor, pero puede configurarse localmente para pruebas
+
+# Otros
+# pre-auto-gc: se ejecuta justo antes de que Git realice una operación de recolección de basura (garbage collection) automática. 
+# Este hook puede ser útil para realizar tareas de mantenimiento o para prevenir la ejecución de la recolección de basura automática bajo ciertas condiciones.
+# `$ git gc --auto`
+ 
+echo "FILE '.githooks/pre-auto-gc' START"
+echo "FILE '.githooks/pre-auto-gc' END :)"
+
+exit 0

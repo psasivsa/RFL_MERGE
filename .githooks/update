@@ -1,4 +1,9 @@
 #!/bin/bash
 
+# .git\hooks\update.sample
+# Generalmente del lado del servidor, pero puede configurarse localmente para pruebas
+
 echo "FILE '.githooks/update' START"
 echo "FILE '.githooks/update' END :)"
+
+exit 0

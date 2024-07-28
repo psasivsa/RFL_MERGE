@@ -1,4 +1,12 @@
 #!/bin/bash
 
+# .git\hooks\pre-rebase.sample
+# Otros
+# pre-rebase: Antes de realizar un git rebase.
+# Se ejecuta antes de que se realice un git rebase. Se puede usar para evitar rebases en ciertas ramas o para realizar comprobaciones antes de rebases.
+# `$ git rebase`
+
 echo "FILE '.githooks/pre-rebase' START"
 echo "FILE '.githooks/pre-rebase' END :)"
+
+exit 0
