@@ -1,13 +1,16 @@
 # git commit -m ...
 ```sh
-$ git commit -m "RFL-0010 feat: save hooks"
-#   FILE '.githooks/pre-commit' START
-#   FILE '.githooks/pre-commit' END :)
-#   FILE '.githooks/prepare-commit-msg' START
-#   FILE '.githooks/prepare-commit-msg' END :)
-#   FILE '.githooks/commit-msg' START
-#       pattern-1
-#   FILE '.githooks/commit-msg' END :)
+git commit -m "RFL-0012 feat: add githooks"
+
+# FILE '.githooks/pre-commit' START
+# FILE '.githooks/pre-commit' END :)
+# FILE '.githooks/prepare-commit-msg' START
+# FILE '.githooks/prepare-commit-msg' END :)
+# FILE '.githooks/commit-msg' START
+# pattern-1
+# FILE '.githooks/commit-msg' END :)
+# FILE '.githooks/post-commit' START
+# FILE '.githooks/post-commit' END :)
 ```
 
 # git status
