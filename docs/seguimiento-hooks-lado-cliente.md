@@ -22,7 +22,20 @@ NULL
 
 # git switch main 
 ```sh
-NULL
+$ git switch main
+    Switched to branch 'main'
+    M       .githooks/post-checkout
+    M       .githooks/pre-auto-gc
+    M       docs/seguimiento-hooks-lado-cliente.md
+    Your branch is ahead of 'origin/main' by 19 commits.
+    (use "git push" to publish your local commits)
+    FILE '.githooks/post-checkout' START
+    FILE '.githooks/post-checkout' END :)
+
+$ git switch -c RFL-0014
+    Switched to a new branch 'RFL-0014'
+    FILE '.githooks/post-checkout' START
+    FILE '.githooks/post-checkout' END :)
 ```
 
 # git pull 
