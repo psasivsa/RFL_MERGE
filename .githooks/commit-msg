@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "FILE '.githooks/commit-msg' START"
+
 # Ruta al archivo de mensaje de commit
 commit_message_file=$1
 
@@ -76,5 +78,5 @@ if [[ ! $commit_message =~ $pattern ]]; then
 fi
 
 # Permitir la operación
-echo "(Hook: commit-msg PASS)"
+echo "FILE '.githooks/commit-msg' END :)"
 exit 0

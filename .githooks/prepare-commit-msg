@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "FILE '.githooks/prepare-commit-msg' START"
+echo "FILE '.githooks/prepare-commit-msg' END :)"

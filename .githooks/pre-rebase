@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "FILE '.githooks/pre-rebase' START"
+echo "FILE '.githooks/pre-rebase' END :)"

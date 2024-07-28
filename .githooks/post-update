@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "FILE '.githooks/post-update' START"
+echo "FILE '.githooks/post-update' END :)"

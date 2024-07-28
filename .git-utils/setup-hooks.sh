@@ -1,3 +1,7 @@
+#!/bin/bash
+
+echo "FILE '.githooks/setup-hooks.sh' START"
+
 # Despues de Clonar el Repositorio 
 # configuramos la carpeta de los Hooks personalizados por defecto.
 # Asegurarse de que los Hooks sean Ejecutables: `$ chmod +x setup-hooks.sh, $ chmod +x .githooks/pre-commit`
@@ -14,3 +18,5 @@ git config core.editor "code" # VSCode
 
 # Eliminar las referencias a ramas remotas que han sido eliminadas en el repositorio remoto al realizar un `fetch`.
 # git config fetch.prune true
+
+echo "FILE '.githooks/setup-hooks.sh' END :)"

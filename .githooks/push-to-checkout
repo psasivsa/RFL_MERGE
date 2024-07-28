@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "FILE '.githooks/push-to-checkout' START"
+echo "FILE '.githooks/push-to-checkout' END :)"

@@ -1,23 +1,107 @@
 #!/bin/bash
 
-# Branch Convention
+echo "FILE '.githooks/pre-push' START"
+
 # ---------------------------------------------------------
-# Definir la expresión regular para el formato de las ramas
-branch_pattern='^(refs/heads/(RFL-[0-9]{4}|INCI[0-9]+)).*'
+# Obtener el nombre de la rama actual
+current_branch=$(git symbolic-ref --short HEAD)
 
-while read local_ref local_sha remote_ref remote_sha; do
-    # Validar solo las referencias de ramas
-    if [[ $remote_ref =~ refs/heads/ ]]; then
-        if [[ ! $remote_ref =~ $branch_pattern ]]; then
-            echo "Error: El nombre de la rama '$remote_ref' no cumple con el formato requerido."
-            echo "Las ramas deben comenzar con 'RFL-' seguido de cuatro números o 'INCI' seguido de números."
-            exit 1
-        fi
-    fi
-done
+# Definir el patrón permitido
+allowed_pattern="^(RFL-|INCI)"
+
+# Comprobar si el nombre de la rama coincide con el patrón permitido
+if [[ ! "$current_branch" =~ $allowed_pattern ]]; then
+    echo "Error: El nombre de la rama '$current_branch' no es válido."
+    echo "Las ramas deben comenzar con 'RFL-' o 'INCI'."
+    exit 1
+fi
 # ---------------------------------------------------------
 
 
-
-
+# Permitir el push si el nombre de la rama es válido
+echo "FILE '.githooks/pre-push' END :)"
 exit 0
+
+
+
+
+
+
+
+
+# # Branch Convention
+# # ---------------------------------------------------------
+# # Definir la expresión regular para el formato de las ramas
+# branch_pattern='^(refs/heads/(RFL-[0-9]{4}|INCI[0-9]+)).*'
+
+# while read local_ref local_sha remote_ref remote_sha; do
+#     # Validar solo las referencias de ramas
+#     if [[ $remote_ref =~ refs/heads/ ]]; then
+#         if [[ ! $remote_ref =~ $branch_pattern ]]; then
+#             echo "Error: El nombre de la rama '$remote_ref' no cumple con el formato requerido."
+#             echo "Las ramas deben comenzar con 'RFL-' seguido de cuatro números o 'INCI' seguido de números."
+#             exit 1
+#         fi
+#     fi
+# done
+# # ---------------------------------------------------------
+
+
+
+# # Evitar la eliminacion de Ramas que no estan en remoto y empiezen por (RFL- o INCI)
+# # -------------------------------------------------------
+
+# # Define las ramas que no pueden ser eliminadas
+# PROHIBITED_PREFIXES=("RFL-" "INCI")
+
+# # Función para verificar si una rama está en remoto
+# is_branch_in_remote() {
+#     local branch=$1
+#     git ls-remote --heads origin "$branch" > /dev/null 2>&1
+# }
+
+# # Verificar ramas locales
+# for branch in $(git branch --format '%(refname:short)'); do
+#     for prefix in "${PROHIBITED_PREFIXES[@]}"; do
+#         if [[ "$branch" == $prefix* && ! $(is_branch_in_remote "$branch") ]]; then
+#             echo "Error: La rama '$branch' está prohibida para eliminarse porque comienza con '$prefix' y no está en remoto."
+#             exit 1
+#         fi
+#     done
+# done
+# # ---------------------------------------------------------
+
+
+
+# # # Evitar la eliminacion de Ramas que no estan en remoto y empiezen por (RFL- o INCI)
+# # # ---------------------------------------------------------
+# # # Obtener la rama local que está siendo empujada
+# # local_branch=$(git rev-parse --abbrev-ref HEAD)
+
+# # # Verificar si la rama local empieza con RFL- o INCI
+# # if [[ ! "$local_branch" =~ ^(RFL-|INCI) ]]; then
+# #     echo "La rama '$local_branch' no empieza con 'RFL-' o 'INCI'. No se realizará ninguna acción."
+# #     exit 0
+# # fi
+
+# # # Obtener la lista de ramas remotas
+# # remote_branches=$(git ls-remote --heads origin | awk '{print $2}' | sed 's/refs\/heads\///')
+
+
+# # # Verificar si la rama local es una de las ramas remotas
+# # if echo "$remote_branches" | grep -qw "$local_branch"; then
+# #     echo "La rama '$local_branch' ya existe en el repositorio remoto. No se eliminará."
+# #     exit 0
+# # else
+# #     echo "La rama '$local_branch' no existe en el repositorio remoto. Procediendo con la eliminación."
+
+# #     # Si deseas eliminar la rama remota, usa el siguiente comando
+# #     # git push origin --delete $local_branch
+
+# #     exit 1
+# # fi
+# # # ---------------------------------------------------------
+
+
+
+# exit 0

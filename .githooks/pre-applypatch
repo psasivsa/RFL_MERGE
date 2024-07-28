@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "FILE '.githooks/pre-applypatch' START"
+echo "FILE '.githooks/pre-applypatch' END :)"

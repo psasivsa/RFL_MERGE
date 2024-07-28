@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "FILE '.githooks/pre-merge-commit' START"
+echo "FILE '.githooks/pre-merge-commit' END :)"

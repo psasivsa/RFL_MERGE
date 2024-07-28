@@ -1,27 +1,29 @@
 #!/bin/bash
 
-# Obtener la rama actual después de la fusión
-current_branch=$(git rev-parse --abbrev-ref HEAD)
+echo "FILE '.githooks/post-merge' START"
 
-# Verificar si estamos en la rama 'main' y si es una fusión
-if [ "$current_branch" = "main" ]; then
-    echo "Has fusionado con la rama 'main'."
-    exit 1
-fi
+# # Obtener la rama actual después de la fusión
+# current_branch=$(git rev-parse --abbrev-ref HEAD)
 
-# Verificar si estamos en la rama 'preprod' y si es una fusión
-if [ "$current_branch" = "preprod" ]; then
-    echo "Has fusionado con la rama 'preprod'."
-    exit 1
-fi
+# # Verificar si estamos en la rama 'main' y si es una fusión
+# if [ "$current_branch" = "main" ]; then
+#     echo "Has fusionado con la rama 'main'."
+#     exit 1
+# fi
 
-# Verificar si estamos en la rama 'production' y si es una fusión
-if [ "$current_branch" = "production" ]; then
-    echo "Has fusionado con la rama 'production'."
-    exit 1
-fi
+# # Verificar si estamos en la rama 'preprod' y si es una fusión
+# if [ "$current_branch" = "preprod" ]; then
+#     echo "Has fusionado con la rama 'preprod'."
+#     exit 1
+# fi
+
+# # Verificar si estamos en la rama 'production' y si es una fusión
+# if [ "$current_branch" = "production" ]; then
+#     echo "Has fusionado con la rama 'production'."
+#     exit 1
+# fi
 
 
 # Permitir la operación
-echo "(Hook: post-merge PASS)"
+echo "FILE '.githooks/post-merge' END :)"
 exit 0
