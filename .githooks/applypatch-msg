@@ -1,4 +1,11 @@
 #!/bin/bash
 
+# .git\hooks\applypatch-msg.sample
+# Email workflow hooks
+# applypatch-msg: Se ejecuta cuando se aplica un parche con git am. Permite validar o modificar el mensaje de commit.
+# `$ git am`
+
 echo "FILE '.githooks/applypatch-msg' START"
 echo "FILE '.githooks/applypatch-msg' END :)"
+
+exit 0

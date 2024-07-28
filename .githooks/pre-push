@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# .git\hooks\pre-push.sample
+# Otros
+# pre-push: Antes de realizar un git push.
+# Se ejecuta antes de que se realice un git push. Se puede usar para realizar comprobaciones adicionales antes de enviar los cambios al servidor remoto.
+# `# git push`
+
 echo "FILE '.githooks/pre-push' START"
 
 # ---------------------------------------------------------

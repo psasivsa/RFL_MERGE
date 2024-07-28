@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# .git\hooks\commit-msg.sample
+# Committing-workflow hooks
+# commit-msg: Después de que el usuario introduce el mensaje de commit.
+# Se ejecuta después de que el usuario introduce el mensaje de commit, pero antes de que se finalice el commit. Se puede usar para validar el contenido del mensaje de commit.
+# `$ git commit`
+
 echo "FILE '.githooks/commit-msg' START"
 
 # Ruta al archivo de mensaje de commit

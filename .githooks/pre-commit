@@ -1,8 +1,12 @@
 #!/bin/bash
 
+# .git\hooks\pre-commit.sample
+# Committing-workflow hooks
+# pre-commit: Antes de escribir el commit en la base de datos.
+# Se ejecuta antes de que se escriba el commit en la base de datos de Git. Se puede usar para realizar comprobaciones del código, como pruebas automatizadas o linters.
+# `$ git commit` 
+
 echo "FILE '.githooks/pre-commit' START"
-
-
 
 # Impedir poder hacer commits directos a la rama 'main, preprod, production'
 # ---------------------------------------------------------

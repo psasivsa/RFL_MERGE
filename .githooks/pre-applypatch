@@ -1,4 +1,12 @@
 #!/bin/bash
 
+# .git\hooks\pre-applypatch.sample
+# Email workflow hooks
+# pre-applypatch: Antes de aplicar un parche con git am.
+# Se ejecuta antes de que se aplique un parche con git am. Se puede usar para verificar el parche antes de aplicarlo.
+# `$ git am`
+
 echo "FILE '.githooks/pre-applypatch' START"
 echo "FILE '.githooks/pre-applypatch' END :)"
+
+exit 0

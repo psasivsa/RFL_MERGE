@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Generalmente del lado del servidor, pero puede configurarse localmente para pruebas
+
+# Otros
+# post-rewrite: Después de git commit --amend o git rebase.
+# Se ejecuta después de que se realiza un git commit --amend o un git rebase. Se puede usar para realizar tareas relacionadas con la reescritura de la historia del repositorio.
+# `$ git commit --amend`, `$ git rebase`
+
+echo "FILE '.githooks/post-rewrite' START"
+echo "FILE '.githooks/post-rewrite' END :)"
+
+exit 0

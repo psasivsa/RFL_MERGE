@@ -1,4 +1,8 @@
 #!/bin/bash
 
+# .git\hooks\fsmonitor-watchman.sample
+
 echo "FILE '.githooks/fsmonitor-watchman' START"
 echo "FILE '.githooks/fsmonitor-watchman' END :)"
+
+exit 0

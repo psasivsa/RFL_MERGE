@@ -1,4 +1,8 @@
 #!/bin/bash
 
+# .git\hooks\post-update.sample
+
 echo "FILE '.githooks/post-update' START"
 echo "FILE '.githooks/post-update' END :)"
+
+exit 0

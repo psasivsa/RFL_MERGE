@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Committing-workflow hooks
+# post-commit: Después de completar el commit.
+# Se ejecuta después de que el commit se ha completado. Se puede usar para enviar notificaciones o para ejecutar otras tareas relacionadas con el commit.
+# `$ git commit`
+
+echo "FILE '.githooks/post-commit' START"
+echo "FILE '.githooks/post-commit' END :)"
+
+exit 0

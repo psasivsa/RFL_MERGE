@@ -1,4 +1,7 @@
 #!/bin/bash
 
+# .git\hooks\pre-merge-commit.sample
+
 echo "FILE '.githooks/pre-merge-commit' START"
 echo "FILE '.githooks/pre-merge-commit' END :)"
+exit 0
